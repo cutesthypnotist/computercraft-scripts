@@ -10,14 +10,15 @@ onEvent('recipes', e => {
     crimson_iron: 'silentgear',
     azure_silver: 'silentgear',
     iesnium: 'occultism',
-    pure_copper: 'assemblylinemachines',
-    pure_iron: 'assemblylinemachines',
-    pure_gold: 'assemblylinemachines',
-    pure_titanium: 'assemblylinemachines',
-    pure_steel: 'assemblylinemachines',
-    energized_gold: 'assemblylinemachines',
-    pure_copper: 'assemblylinemachines',
-    flerovium: 'assemblylinemachines',    
+    // pure_copper: 'assemblylinemachines',
+    // pure_iron: 'assemblylinemachines',
+    // pure_gold: 'assemblylinemachines',
+    // pure_titanium: 'assemblylinemachines',
+    // pure_steel: 'assemblylinemachines',
+    // energized_gold: 'assemblylinemachines',
+    // pure_copper: 'assemblylinemachines',
+    // flerovium: 'assemblylinemachines',    
+    // chromium: 'assemblylinemachines',
   }
 
   let craftOverride = {
@@ -208,9 +209,7 @@ onEvent('recipes', e => {
       "output": Ingredient.of(output),
       "input": {
         "count": inputCount,
-        "base_ingredient": {
-          "tag": `forge:ingots/${input}`
-        }
+        "tag": `forge:ingots/${input}`
       },
       "time": 15
     }).id(`kubejs:almpress/${type}_${input}`)
@@ -378,14 +377,14 @@ onEvent('recipes', e => {
     e.smelting(`${oreOverride[ore] ?? 'alltheores'}:${ore}_ingot`, `#forge:ores/${ore}`).xp(1.0).id(`kubejs:smelting/${ore}_ingot_from_ore`)
   }
 
-  atoMetals.concat(vanillaMetals, atmMetals, almMetals).forEach(ore => {
+  atoMetals.concat(vanillaMetals, atmMetals).forEach(ore => {
     ['ore', 'raw_ore', 'raw_block', 'ingot', 'dust'].forEach(type => ieUnifyOres(ore, type));
     ['ore', 'raw_ore', 'raw_block', 'ingot'].forEach(type => createUnifyOres(ore, type));
     ['ore', 'raw_ore', 'ingot'].forEach(type => occultismUnifyCrusher(ore, type));
     ['plate', 'gear', 'rod'].forEach(type => ieUnifyPress(ore, type));
     ['plate', 'gear', 'rod'].forEach(type => almPressing(ore, type));
     createPressing(ore)
-    almPressing(ore)
+    //almPressing(ore)
     blastingUnifyOres(ore)
     // remove combiner recipes
     e.remove({type:"mekanism:combining", id:`/${ore}\/ore/`})
@@ -393,8 +392,9 @@ onEvent('recipes', e => {
 
   atoAlloys.forEach(alloy => {
     ['plate', 'gear', 'rod'].forEach(type => ieUnifyPress(alloy, type))
+    ['plate', 'gear', 'rod'].forEach(type => almPressing(alloy, type))
     mekUnifyOres(alloy, 'ingot')
-    almPressing(alloy)
+    //almPressing(alloy)
     createPressing(alloy)
   })
 

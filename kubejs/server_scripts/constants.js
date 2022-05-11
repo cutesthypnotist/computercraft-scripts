@@ -3,7 +3,7 @@ let colors = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pin
 let maDisabledSeeds = ['apatite', 'rubber', 'ruby', 'sapphire', 'basalz', 'blazing_crystal', 'blitz', 'blizz', 'brass', 'bronze', 'compressed_iron', 'constantan', 'chrome', 'electrum', 'elementium', 'ender_biotite', 'energized_steel', 'fluix', 'graphite', 'hop_graphite', 'invar', 'iridium', 'manasteel', 'niotic_crystal', 'nitro_crystal', 'quartz_enriched_iron', 'refined_glowstone', 'refined_obsidian', 'rock_crystal', 'rubber', 'signalum', 'silicon', 'sky_stone', 'spirited_crystal', 'starmetal', 'steel', 'sulfur', 'terrasteel', 'titanium', 'tungsten', 'mithril', 'tinkers_bronze', 'ironwood', 'steeleaf', 'pig_iron', 'slimesteel', 'rose_gold', 'queens_slime', 'manyullyn', 'fiery_ingot', 'knightmetal', 'hepatizon', 'lumium', 'enderium']
 let vanillaMetals = ['iron', 'gold', 'copper']
 let atoMetals = ['aluminum', 'osmium', 'platinum', 'zinc', 'uranium', 'tin', 'lead', 'silver', 'nickel']
-let almMetals = ['pure_copper', 'pure_iron', 'pure_gold', 'pure_titanium', 'pure_steel', 'energized_gold', 'pure_copper', 'flerovium', 'chromium']
+// let almMetals = ['pure_copper', 'pure_iron', 'pure_gold', 'pure_titanium', 'pure_steel', 'energized_gold', 'pure_copper', 'flerovium', 'chromium']
 let atoAlloys = ['steel', 'invar', 'electrum', 'bronze', 'enderium', 'lumium', 'signalum', 'constantan', 'brass']
 let atmMetals = ['allthemodium', 'vibranium', 'unobtainium']
 let immersiveMetals = ['aluminum', 'lead', 'nickel', 'silver', 'uranium']
@@ -34,8 +34,8 @@ let energize = (e, ingredient, result, power, count) => {
 let almAlloy = (e, result, number, topItem, bottomItem, ticks) => {
   e.custom({
     type: "assemblylinemachines:alloying",
-    part_a: { topItem },
-    part_b: { bottomItem },
+    part_a: topItem,
+    part_b: bottomItem,
     output: {  item: result, count: number },
     time: ticks
   }).id(`kubejs:almalloy/${result.replace(':', '/')}`)
@@ -44,9 +44,9 @@ let almAlloy = (e, result, number, topItem, bottomItem, ticks) => {
 let almPurify = (e, result, number, itemA, itemB, itemC, ticks) => {
   e.custom({
     type: "assemblylinemachines:purifier",
-    part_a: { itemA },
-    part_b: { itemB },
-    tobepurified: { itemC },
+    part_a: itemA,
+    part_b: itemB,
+    tobepurified: itemC,
     output: { item: result, count: number },
     time: ticks
   }).id(`kubejs:almpurify/${result.replace(':', '/')}`)

@@ -2,7 +2,6 @@ onEvent('recipes', e => {
     //let atoAlloys = ['steel', 'invar', 'electrum', 'bronze', 'enderium', 'lumium', 'signalum', 'constantan', 'brass']
     let time = 100
 
-    `${craftOverride[input] ?? 'alltheores'}:${input}_${type}`
     almAlloy(e, 'alltheores:invar_ingot', 1, { tag: 'forge:ingots/iron' }, { tag: 'forge:ingots/nickel' }, time*2)
     almAlloy(e, 'alltheores:electrum_ingot', 1, { tag: 'forge:ingots/gold' }, { tag: 'forge:ingots/silver' }, time*2)
     almAlloy(e, 'alltheores:bronze_ingot', 4, { tag: 'forge:ingots/copper', count: 3 }, { tag: 'forge:ingots/tin' }, time * 2)
