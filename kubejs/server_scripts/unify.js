@@ -203,7 +203,7 @@ onEvent('recipes', e => {
       e.shapeless(output, [`2x #forge:ingots/${input}`, '#misctags:immersive_engineering_hammer'])
         .id(`kubejs:crafting/plate_${input}_hammering`);
     }
-    e.custom({
+    if(!!type) e.custom({
       "type": "assemblylinemachines:pneumatic",
       "mold": `${type}`,
       "output": Ingredient.of(output),
@@ -391,8 +391,8 @@ onEvent('recipes', e => {
   });
 
   atoAlloys.forEach(alloy => {
-    ['plate', 'gear', 'rod'].forEach(type => ieUnifyPress(alloy, type))
-    ['plate', 'gear', 'rod'].forEach(type => almPressing(alloy, type))
+    ['plate', 'gear', 'rod'].forEach(type => ieUnifyPress(alloy, type));
+    ['plate', 'gear', 'rod'].forEach(type => almPressing(alloy, type));
     mekUnifyOres(alloy, 'ingot')
     //almPressing(alloy)
     createPressing(alloy)
